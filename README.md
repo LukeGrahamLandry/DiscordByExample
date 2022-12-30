@@ -1,7 +1,7 @@
 # Pycord By Example
 
-Each directory is a self-contained project implementing a discord bot using the [py-cord](https://github.com/Pycord-Development/pycord) library. 
-The README file will have a step by step explanation of how it was made. 
+Each directory is a self-contained project implementing a discord bot in python using the [py-cord](https://github.com/Pycord-Development/pycord) library. 
+Each project has a step by step explanation of how it was made (and [source code](https://github.com/LukeGrahamLandry/PycordByExample)).
 
 ## Official Resources
 
@@ -28,16 +28,12 @@ import discord
 import dotenv
 import os
 
-dotenv.load_dotenv()
 bot = discord.Bot()
 
 # The rest of your code will go here
 
+dotenv.load_dotenv()
 bot.run(os.getenv('TOKEN'))
 ```
 
-## Projects
-
-Roughly ordered by difficulty. 
-
-- RockPaperScissors: a simple game as a slash command
+I use the pip package `python-dotenv` to load the bot token from a `.env` text file, but you're free to do it differently. Just make sure you never share the token!

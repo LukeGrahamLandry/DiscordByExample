@@ -1,0 +1,15 @@
+{
+    "discord": {
+
+    },
+    "users": {
+        "1234567890": {
+            "email": "demo@example.com",
+            "name": "Foo"
+        },
+        "0987654321": {
+            "email": "user@example.com",
+            "name": "Bar"
+        }
+    }
+}

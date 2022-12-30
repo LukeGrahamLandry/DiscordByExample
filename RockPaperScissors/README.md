@@ -6,8 +6,6 @@ Here's what the result will look like.
 
 ![](assets/result.png)
 
-This explanation assumes you've already set up an [empty discord bot](../). 
-
 ## Game Logic
 
 Let's write some code to define the rules of rock paper scissors. 

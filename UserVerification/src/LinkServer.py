@@ -12,7 +12,7 @@ def home():
 def verify_user(session):
     was_valid_session = DataAccess.set_verified(session)
     if was_valid_session:
-        return "Your discord account has been linked. You may now speak in server."
+        return "Your discord account has been linked. You may now speak in the server."
     else:
         return "Invalid Session. Please request a new link from the bot."
 

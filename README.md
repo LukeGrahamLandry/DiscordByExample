@@ -37,3 +37,10 @@ bot.run(os.getenv('TOKEN'))
 ```
 
 I use the pip package `python-dotenv` to load the bot token from a `.env` text file, but you're free to do it differently. Just make sure you never share the token!
+
+## Extension Challenges
+
+Throughout the projects there are ideas for additional features you could implement to practice your programming skills. 
+These will generally require knowledge of the discord api not covered in the project. 
+Get comfortable using Google and the resources above to solve problems on your own. 
+They may be hard, you'll probably need a solid grasp of python programming fundamentals to attempt them. 

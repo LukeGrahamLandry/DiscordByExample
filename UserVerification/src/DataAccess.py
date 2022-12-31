@@ -3,13 +3,11 @@ from random import randrange
 from threading import Lock
 
 data_lock = Lock()
-with open("./database.json", "r") as f:
+with open("database.json", "r") as f:
     data = json.loads(f.read())
 user_data = data["users"]
 discord_data = data["discord"]
 sessions = {}
-
-print(json.dumps(data))
 
 
 def get_email(user_id):
@@ -39,11 +37,11 @@ def set_verified(session):
         discord_user_id, user_id = sessions[session]
         del sessions[session]
         discord_data[discord_user_id] = user_id
-        write_data()
+        _write_data()
         return True
 
 
-def write_data():
+def _write_data():
     # dictionaries are passed by reference so changes made to the variables are present in the original dict
     # data = { "discord": discord_data, "users": user_data }
 

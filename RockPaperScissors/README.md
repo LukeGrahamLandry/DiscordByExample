@@ -57,6 +57,8 @@ def beats(self, other):
         return other == Selection.PAPER
 ```
 
+**Extension Challenge:** Add a new Selection option to the game. For example, let someone choose "Gun" to beat any other choice. 
+
 ## Slash Command With Buttons 
 
 Now we want to allow the user to start a Rock Paper Scissors game from within discord. 
@@ -71,7 +73,7 @@ When the button is clicked, the method will be called.
 The parameters of the annotation control how the button will look in the discord client. 
 The display text will be `emoji` and then `label`. The color is decided by `style` ([see options](https://guide.pycord.dev/interactions/ui-components/buttons#button-styles)). 
 
-Each of our buttons will simply call the `endGame` method (which we haven't defined yet) with the corresponding `Selection` object. 
+Each of our buttons will simply call the `end_game` method (which we haven't defined yet) with the corresponding `Selection` object. 
 We also pass it the `interaction` object which will allow us to send a response back to the user in discord. 
 
 Notice how similar each button definition is, all we're changing is the display text and the `Selection` used.
@@ -79,16 +81,16 @@ Notice how similar each button definition is, all we're changing is the display 
 ```python
 class GameView(discord.ui.View):
     @discord.ui.button(label="Rock", style=discord.ButtonStyle.primary, emoji="🪨")
-    async def chooseRock(self, button, interaction):
-        await endGame(interaction, Selection.ROCK)
+    async def choose_rock(self, button, interaction):
+        await end_game(interaction, Selection.ROCK)
 
     @discord.ui.button(label="Paper", style=discord.ButtonStyle.primary, emoji="📄")
-    async def choosePaper(self, button, interaction):
-        await endGame(interaction, Selection.PAPER)
+    async def choose_paper(self, button, interaction):
+        await end_game(interaction, Selection.PAPER)
 
     @discord.ui.button(label="Scissors", style=discord.ButtonStyle.primary, emoji="✂️")
-    async def chooseScissors(self, button, interaction):
-        await endGame(interaction, Selection.SCISSORS)
+    async def choose_scissors(self, button, interaction):
+        await end_game(interaction, Selection.SCISSORS)
 ```
 
 ### Command
@@ -101,7 +103,7 @@ We respond with some text and add our buttons underneath by passing a new object
 
 ```python
 @bot.slash_command(name="game", description="Play rock paper scissors")
-async def startGame(ctx):
+async def start_game(ctx):
     await ctx.respond("Hey. let's play a game!", view=GameView())
 ```
 
@@ -110,7 +112,7 @@ async def startGame(ctx):
 This function will be called when the user presses one of our buttons. 
 
 ```python
-async def endGame(interaction, player_choice):
+async def end_game(interaction, player_choice):
     pass
 ```
 
@@ -145,3 +147,7 @@ Finally, send that response as a message to discord. You can only call `response
 ```python
 await interaction.response.send_message(response)
 ```
+
+**Extension Challenge:** Currently, you can keep playing new games by pressing the buttons on the bot's game message. 
+Try removing the bot's initial message, or the buttons, when the game ends, so you have to explicitly start a new game with 
+the slash command to play again. 

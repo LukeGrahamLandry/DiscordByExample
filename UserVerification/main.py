@@ -1,5 +1,9 @@
 from UserVerification.src import Bot, LinkServer
-import threading
+from threading import Thread
+import os
+import dotenv
 
-threading.Thread(target=LinkServer.start).start()
-Bot.start()
+Thread(target=LinkServer.start).start()
+
+dotenv.load_dotenv()
+Bot.start(os.getenv('TOKEN'))

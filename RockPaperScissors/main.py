@@ -35,19 +35,19 @@ Selection.SCISSORS = Selection("scissors")
 
 class GameView(discord.ui.View):
     @discord.ui.button(label="Rock", style=discord.ButtonStyle.primary, emoji="🪨")
-    async def chooseRock(self, button, interaction):
-        await endGame(interaction, Selection.ROCK)
+    async def choose_rock(self, button, interaction):
+        await end_game(interaction, Selection.ROCK)
 
     @discord.ui.button(label="Paper", style=discord.ButtonStyle.primary, emoji="📄")
-    async def choosePaper(self, button, interaction):
-        await endGame(interaction, Selection.PAPER)
+    async def choose_paper(self, button, interaction):
+        await end_game(interaction, Selection.PAPER)
 
     @discord.ui.button(label="Scissors", style=discord.ButtonStyle.primary, emoji="✂️")
-    async def chooseScissors(self, button, interaction):
-        await endGame(interaction, Selection.SCISSORS)
+    async def choose_scissors(self, button, interaction):
+        await end_game(interaction, Selection.SCISSORS)
 
 
-async def endGame(interaction, player_choice):
+async def end_game(interaction: discord.Interaction, player_choice: Selection):
     options = [Selection.ROCK, Selection.PAPER, Selection.SCISSORS]
     computer_choice = options[random.randrange(len(options))]
 
@@ -63,7 +63,7 @@ async def endGame(interaction, player_choice):
 
 
 @bot.slash_command(name="game", description="Play rock paper scissors")
-async def startGame(ctx):
+async def start_game(ctx: discord.ApplicationContext):
     await ctx.respond("Hey. let's play a game!", view=GameView())
 
 
